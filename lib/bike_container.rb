@@ -19,7 +19,7 @@ DEFAULT_CAPACITY = 20
 	end
 
 	def dock(bike)
-		raise "Station is full" if full?
+		raise "Sorry! There is no more room for bikes" if full?
 		@bikes << bike
 	end
 
