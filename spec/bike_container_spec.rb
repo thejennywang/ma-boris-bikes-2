@@ -4,8 +4,8 @@ class ContainerHolder; include BikeContainer; end
 
 describe BikeContainer do
 	
-	let (:bike) { double :bike}
-	let (:bike2) { double :bike2}
+	let (:bike) { double :bike, instance_of?: true }
+	let (:bike2) { double :bike2, instance_of?: true }
 	let (:holder) { ContainerHolder.new }
 
 	it 'should accept a bike' do
@@ -32,11 +32,27 @@ describe BikeContainer do
 	end
 
 	it 'should provide the list of available bikes' do
-		working_bike = double :working_bike, broken?: false
-		broken_bike = double :broken_bike,  broken?: true  
+		working_bike = double :working_bike, broken?: false, instance_of?: true
+		broken_bike = double :broken_bike,  broken?: true, instance_of?: true
 		holder.dock(working_bike)
 		holder.dock(broken_bike)
 		expect(holder.available_bikes).to eq([working_bike])
+	end
+
+	it 'should know if it has no bikes' do
+		expect(holder.empty?).to be true
+	end
+
+	it 'should not release a bike if it is empty' do
+		expect(lambda {holder.release(bike)}).to raise_error(RuntimeError)
+	end
+
+	it 'should only accept bikes, not bananas' do
+		expect(lambda {holder.dock("banana")}).to raise_error(RuntimeError)
+	end
+
+	it 'should only release bikes, not bananas' do
+		expect(lambda {holder.release("banana")}).to raise_error(RuntimeError)
 	end
 
 end

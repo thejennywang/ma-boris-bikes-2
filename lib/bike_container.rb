@@ -1,3 +1,4 @@
+require_relative 'bike'
 module BikeContainer
 
 DEFAULT_CAPACITY = 20
@@ -19,16 +20,23 @@ DEFAULT_CAPACITY = 20
 	end
 
 	def dock(bike)
-		raise "Sorry! There is no more room for bikes" if full?
+		raise "Oops! That's not a bike!" unless bike.instance_of?(Bike)
+		raise "Sorry! There is no more room for bikes." if full?
 		@bikes << bike
 	end
 
 	def release(bike)
+		raise "Oops! We only release bikes :P" unless bike.instance_of?(Bike)
+		raise "Sorry! There aren't any bikes." if empty?
 		@bikes.delete(bike)
 	end
 
 	def full?
 		bike_count == capacity
+	end
+
+	def empty?
+		bike_count == 0
 	end
 
 	def available_bikes
