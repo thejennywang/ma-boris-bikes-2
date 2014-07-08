@@ -1,7 +1,6 @@
 require 'van'
-require 'bike'
 
-describe 'van' do
+describe Van do
 	
 	let (:van) { Van.new(:capacity => 100)}
 

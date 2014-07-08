@@ -1,6 +1,6 @@
 require 'bike'
 
-describe 'bike' do
+describe Bike do
 	let  (:bike) { Bike.new }
 
 	it 'should not be broken when created' do
