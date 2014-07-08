@@ -18,7 +18,6 @@ describe Garage do
 		
 		expect(bike).to receive(:fix!)
 		garage.dock(bike)
-
 	end
 
 end

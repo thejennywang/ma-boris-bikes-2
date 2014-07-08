@@ -1,12 +1,11 @@
 require './lib/bike_container'
-require 'bike'
 
 class ContainerHolder; include BikeContainer; end
 
 describe BikeContainer do
 	
-	let (:bike) { Bike.new }
-	let (:bike2) { Bike.new }
+	let (:bike) { double :bike}
+	let (:bike2) { double :bike2}
 	let (:holder) { ContainerHolder.new }
 
 	it 'should accept a bike' do
@@ -23,18 +22,18 @@ describe BikeContainer do
 	end
 
 	it 'should know its capacity' do
-		BikeContainer::DEFAULT_CAPACITY.times {holder.dock(Bike.new)}
+		BikeContainer::DEFAULT_CAPACITY.times {holder.dock(bike)}
 		expect(holder.full?).to be true
 	end
 
 	it 'should not accept bikes beyond capacity' do
-		BikeContainer::DEFAULT_CAPACITY.times {holder.dock(Bike.new)}
-		expect(lambda {holder.dock(Bike.new)}).to raise_error(RuntimeError)
+		BikeContainer::DEFAULT_CAPACITY.times {holder.dock(bike)}
+		expect(lambda {holder.dock(bike)}).to raise_error(RuntimeError)
 	end
 
 	it 'should provide the list of available bikes' do
-		working_bike, broken_bike = Bike.new, Bike.new
-		broken_bike.break!
+		working_bike = double :working_bike, broken?: false
+		broken_bike = double :broken_bike,  broken?: true  
 		holder.dock(working_bike)
 		holder.dock(broken_bike)
 		expect(holder.available_bikes).to eq([working_bike])

@@ -10,9 +10,9 @@ end
 
 class Garage
 
-	prepend GarageExtensions	
 	include BikeContainer
-
+	prepend GarageExtensions	
+	
 	def initialize(options = {})
 		self.capacity = options.fetch(:capacity, capacity)
 	end
