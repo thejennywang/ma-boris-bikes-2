@@ -45,25 +45,25 @@ describe Van do
 	end
 
 	it 'should pick up working bikes from garage' do
-	 	garage = double :garage, available_bikes: [working_bike], release: :bike
+	 	garage = double :garage, working_bikes: [working_bike], release: :bike
 		expect(van).to receive(:dock).with(working_bike)
 		van.pick_up_working_bikes(garage)	
 	end
 
 	it 'should remove working bikes from garage' do
-	 	garage = double :garage, available_bikes: [working_bike], release: :bike
+	 	garage = double :garage, working_bikes: [working_bike], release: :bike
 		expect(garage).to receive(:release).with(working_bike)
 		van.pick_up_working_bikes(garage)	
 	end
 
 	it 'should release working bikes to docking stations' do
-		station = double :station, available_bikes: [working_bike], dock: :bike
+		station = double :station, working_bikes: [working_bike], dock: :bike
 		expect(van_with_working_bike).to receive(:release).with(working_bike)
 		van_with_working_bike.release_working_bikes(station)	
 	end
 
 	it 'should dock working bikes to docking stations' do
-		station = double :station, available_bikes: [working_bike], dock: :bike
+		station = double :station, working_bikes: [working_bike], dock: :bike
 		expect(station).to receive(:dock).with(working_bike)
 		van_with_working_bike.release_working_bikes(station)	
 	end

@@ -10,6 +10,13 @@ class Van
 		@bikes    = bikes
 	end
 
+	# def pick_up(bike_type, location)
+	# 		location.select_bikes(bike_type).each do |bike| 
+	# 		self.dock(bike) 
+	# 		location.release(bike)
+	# 	end
+	# end
+
 	def pick_up_broken_bikes(station)
 		station.broken_bikes.each do |bike| 
 			self.dock(bike) 
@@ -25,14 +32,14 @@ class Van
 	end
 
 	def pick_up_working_bikes(garage)
-		garage.available_bikes.each do |bike|
+		garage.working_bikes.each do |bike|
 			self.dock(bike)
 			garage.release(bike)
 		end
 	end
 
 	def release_working_bikes(station)
-		self.available_bikes.each do |bike|
+		self.working_bikes.each do |bike|
 			self.release(bike)
 			station.dock(bike)
 		end

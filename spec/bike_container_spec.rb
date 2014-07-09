@@ -35,12 +35,12 @@ shared_examples 'a bike container' do
 		expect(lambda {container.dock(bike)}).to raise_error(RuntimeError)
 	end
 
-	it 'should provide the list of available bikes' do
+	it 'should provide the list of working bikes' do
 		working_bike = double :working_bike, broken?: false, instance_of?: true
 		broken_bike = double :broken_bike,  broken?: true, instance_of?: true
 		container.dock(working_bike)
 		container.dock(broken_bike)
-		expect(container.available_bikes).to eq([working_bike])
+		expect(container.working_bikes).to eq([working_bike])
 	end
 
 	it 'should know if it has no bikes' do
@@ -67,4 +67,7 @@ shared_examples 'a bike container' do
 		expect(container.broken_bikes).to eq([broken_bike])
 	end
 
+	it 'should be able to select working bikes when working bikes selected' do
+			
+	end
 end

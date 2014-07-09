@@ -39,11 +39,23 @@ DEFAULT_CAPACITY = 20
 		bike_count == 0
 	end
 
-	def available_bikes
+	def working_bikes
 		bikes.reject {|bike| bike.broken?}
 	end
 
 	def broken_bikes
 		bikes.select { |bike| bike.broken?}
 	end
+
+	# def select_bikes(bike_type)
+	# 	case bike_type
+	# 	when :working_bike
+	# 		return self.working_bikes
+	# 	when :broken_bike
+	# 		return self.broken_bikes
+	# 	else
+	# 		return []
+	# 	end
+	# end
+
 end
