@@ -9,3 +9,7 @@ Paired with Toan (@yoshdog) today TDD'ing Boris Bikes. We learned about classes,
 Day 2
 ------
 Paired with Charlotte (@cmew3) today to program our Boris Bikes project from scratch. Learned about Object-Oriented doubling (London style) and mocking (Chicago style), and prepending modules.
+
+Day 3
+-------
+Stayed with Charlotte (@cmew3) today to add shared_examples and added interactions between the van, garage and station class. Then we worked on refactoring our code for the rest of the day.
