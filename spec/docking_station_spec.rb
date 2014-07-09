@@ -1,12 +1,12 @@
 require 'docking_station'
 require 'bike'
 
-describe Station do
+describe DockingStation do
 
 	let (:bike) { Bike.new }
 	let (:bike2) { Bike.new }
-	let (:old_street) { Station.new }
-	let (:moorgate) {Station.new(:capacity => 30)}
+	let (:old_street) { DockingStation.new }
+	let (:moorgate) {DockingStation.new(:capacity => 30)}
 
 	it 'has no bikes when created' do
 		expect(old_street.bikes).to eq []
